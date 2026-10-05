@@ -1,13 +1,16 @@
 # Portfolio
 
-Roblox developer portfolio, a single self-contained page.
+Roblox developer portfolio, served at https://nicolasrbx.com.
 
 ## Files
 
 | Path | What it is |
 | --- | --- |
-| `index.html` | The whole site. Images and video are embedded as data URIs, so it works from any static host with no other files. |
-| `assets/` | Original media, kept for future edits (not loaded by the page). |
+| `index.html` | The whole page: markup, CSS and a tiny scroll-reveal script. |
+| `assets/banner.png` | Hero banner. |
+| `assets/thumb-*.webp` | Game thumbnails (16:9, from the Roblox game pages). |
+| `assets/combat-360.mp4`, `combat-poster.jpg` | Combat framework video and its poster. |
+| `CNAME` | Custom domain for GitHub Pages. |
 | `serve.js` | Local preview server, no dependencies. |
 
 ## Run locally
@@ -18,15 +21,15 @@ node serve.js
 
 Then open http://localhost:5173
 
-## Deploy
-
-Any static host works, since the site is one file.
-
-- **GitHub Pages**: Settings, Pages, Deploy from branch, `main` / root.
-- **Cloudflare Pages / Netlify / Vercel**: connect the repo, no build command, output directory is the repo root.
-
 ## Editing
 
-`index.html` is generated with the media inlined, so the base64 blocks near the top are the hero
-image and the three game icons, and there is one more inside the framework section for the video.
-Edit the markup and CSS around them, or re-inline a new file from `assets/`.
+Everything is plain HTML in `index.html`.
+
+- **Hero stats**: the two `.stat` blocks (`11K`, `13M+`).
+- **Games**: one `<article class="game">` per game. Change the thumbnail, title, visits and Play link.
+  To add a game, copy an article and drop a new 16:9 image in `assets/`.
+- **Colors**: the variables at the top of the `<style>` block (`--cyan`, `--pink`, `--bg`...).
+
+## Deploy
+
+Push to `main`. GitHub Pages serves the repo root.
